@@ -1,45 +1,51 @@
-// Seleciona todos os botões e personagens
-const botoes = document.querySelectorAll('.botao');
-const personagens = document.querySelectorAll('.personagem');
+// Seleciona todos os botões de personagem
+const botoes = document.querySelectorAll(".botao");
+// Seleciona todos os personagens
+const personagens = document.querySelectorAll(".personagem");
 
-// Função para remover a seleção do botão atual
-function desmarcarBotaoSelecionado() {
-  const botaoSelecionado = document.querySelector(".botao.selecionado");
-  if (botaoSelecionado) {
-    botaoSelecionado.classList.remove("selecionado");
-  }
-}
-
-// Função para marcar o novo botão selecionado
-function marcarBotaoSelecionado(botao) {
-  botao.classList.add("selecionado");
-}
-
-// Função para remover o personagem atualmente selecionado
-function desmarcarPersonagemSelecionado() {
-  const personagemSelecionado = document.querySelector(".personagem.selecionado");
-  if (personagemSelecionado) {
-    personagemSelecionado.classList.remove("selecionado");
-  }
-}
-
-// Função para marcar o personagem correspondente ao botão clicado
-function marcarPersonagemSelecionado(indice) {
-  personagens[indice].classList.add("selecionado");
-}
-
-// Função principal que lida com o clique no botão
-function configurarEventoClick(botao, indice) {
-  botao.addEventListener("click", () => {
-    desmarcarBotaoSelecionado();             // Remove botão selecionado anterior
-    marcarBotaoSelecionado(botao);           // Marca o botão clicado
-
-    desmarcarPersonagemSelecionado();        // Remove personagem selecionado anterior
-    marcarPersonagemSelecionado(indice);     // Exibe o personagem correspondente ao botão
-  });
-}
-
-// Percorre todos os botões e associa o evento de clique
+// Adiciona o evento de clique em cada botão
 botoes.forEach((botao, indice) => {
-  configurarEventoClick(botao, indice);
+	botao.addEventListener("click", () => {
+		removerSelecaoBotao();
+		selecionarBotao(botao);
+
+		removerSelecaoPersonagem();
+		selecionarPersonagem(indice);
+	});
 });
+
+/**
+ * Remove a classe "selecionado" do botão que está atualmente selecionado
+ */
+function removerSelecaoBotao() {
+	const botaoSelecionado = document.querySelector(".botao.selecionado");
+	if (botaoSelecionado) {
+		botaoSelecionado.classList.remove("selecionado");
+	}
+}
+
+/**
+ * Adiciona a classe "selecionado" ao botão clicado
+ * @param {Element} botao - Botão que foi clicado
+ */
+function selecionarBotao(botao) {
+	botao.classList.add("selecionado");
+}
+
+/**
+ * Remove a classe "selecionado" do personagem atualmente exibido
+ */
+function removerSelecaoPersonagem() {
+	const personagemSelecionado = document.querySelector(".personagem.selecionado");
+	if (personagemSelecionado) {
+		personagemSelecionado.classList.remove("selecionado");
+	}
+}
+
+/**
+ * Adiciona a classe "selecionado" ao personagem correspondente ao botão clicado
+ * @param {number} indice - Índice do botão clicado, que corresponde ao personagem
+ */
+function selecionarPersonagem(indice) {
+	personagens[indice].classList.add("selecionado");
+}
