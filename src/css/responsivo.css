@@ -89,22 +89,40 @@
     main .personagem .imagem {
         height: auto;
         width: 100%;
-        object-fit: cover; 
+        object-fit: cover;
     }
 
     .conteudo {
-      top: -20px;
+        position: relative;
+        top: -60px; 
+        padding: 10px;
+        font-size: 12px; 
+        text-align: center;
+    }
+
+    .conteudo .nome-personagem {
+        font-size: 20px;
+    }
+
+    .conteudo .descricao {
+        font-size: 12px;
+        max-width: 90%;
+        margin: auto;
     }
 
     .botoes {
-        padding: 10px;
-        top: -10px;
+        position: relative;
+        padding: 10px 0 30px 0;
+        top: 0;
+        display: flex;
+        flex-wrap: wrap;
         justify-content: center;
+        gap: 10px;
     }
 
     .botoes .botao {
-        width: 35px;
-        height: 35px;
+        width: 40px;
+        height: 40px;
     }
 
     .botoes .botao img {
@@ -116,3 +134,4 @@
         margin: auto;
     }
 }
+
